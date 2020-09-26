@@ -7,12 +7,14 @@ from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 
-@app.route('/square', methods=['POST'])
-def evaluate():
+@app.route('/contact_trace', methods=['POST'])
+def evaluateContectTrace():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
-    inputValue = data.get("input");
-    result = inputValue * inputValue
+    infected = data.get("infected");
+
+    result = infected
+
     logging.info("My result :{}".format(result))
     return json.dumps(result);
 
