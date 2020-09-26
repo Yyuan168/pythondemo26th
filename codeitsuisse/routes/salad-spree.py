@@ -9,15 +9,15 @@ logger = logging.getLogger(__name__)
 
 @app.route('/salad-spree', methods=['POST'])
 def evaluateSaladSpree():
-    data = request.get_json()
+    data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
-    n = data.get("number_of_salads")
-    S = data.get("salad_prices_street_map")
+    n = data.get("number_of_salads");
+    S = data.get("salad_prices_street_map");
 
     result = saladspree(n, S)
 
     logging.info("My result :{}".format(result))
-    return json.dumps(result)
+    return json.dumps(result);
 
 def saladspree(n, S):
     cost = []
