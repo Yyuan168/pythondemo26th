@@ -22,19 +22,28 @@ def evaluateSaladSpree():
 def saladspree(n, S):
     cost = []
     select = []
-    for i in S:
-        flag = False
-        for j in range(len(i) - n + 1):
-            select = i[j:j+n]
-            if "X" not in select:
-                tmp = [int(i) for i in select]
-                if not flag:
-                   Min = sum(tmp)
+    for row in S:
+        i = 0
+        j = 0
+        Min = []
+        while j < len(row) - 1:
+            if row[i] == "X":
+                i += 1
+                if j < i:
+                    j = i
+            else:
+                j += 1
+                if row[j] == "X":
+                    i = j + 1
                 else:
-                    Min = min(Min, sum(tmp))
-                flag = True
-        if flag:
-            cost.append(Min)
+                    if j - i == n - 1:
+                        tmp = row[i:j+1]
+                        tmp = [int(m) for m in tmp]
+                        Min.append(sum(tmp))
+                        i += 1
+        if len(Min):
+            cost.append(min(Min))
+        
     
     return min(cost) if len(cost) != 0 else 0
 
