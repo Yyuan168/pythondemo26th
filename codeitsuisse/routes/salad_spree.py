@@ -35,6 +35,7 @@ def saladspree(n, S):
                 j += 1
                 if row[j] == "X":
                     i = j + 1
+                    j = i
                 else:
                     if j - i == n - 1:
                         tmp = row[i:j+1]
