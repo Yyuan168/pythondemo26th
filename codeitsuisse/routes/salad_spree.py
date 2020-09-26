@@ -20,12 +20,11 @@ def evaluateSaladSpree():
     return json.dumps(result);
 
 def saladspree(n, S):
-    cost = []
     select = []
+    Min = 0
     for row in S:
         i = 0
         j = 0
-        Min = []
         while j < len(row) - 1:
             if row[i] == "X":
                 i += 1
@@ -40,13 +39,13 @@ def saladspree(n, S):
                     if j - i == n - 1:
                         tmp = row[i:j+1]
                         tmp = [int(m) for m in tmp]
-                        Min.append(sum(tmp))
+                        if Min == 0:
+                            Min = sum(tmp)
+                        else:
+                            Min = min(Min, sum(tmp))
                         i += 1
-        if len(Min):
-            cost.append(min(Min))
-        
     
-    return min(cost) if len(cost) != 0 else 0
+    return Min
 
 
 

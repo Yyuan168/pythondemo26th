@@ -7,15 +7,23 @@ from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 
-@app.route('/revisitgeometry', methods=['POST'])
-def evaluateRevisitgeometry():
+@app.route('/clean_floor', methods=['POST'])
+def evaluateCleanFloor():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
-    shapeCoordinates = data.get("shapeCoordinates");
-    lineCoordinates = data.get("lineCoordinates");
+    test = data.get("test");
 
-    # result = findpoint(shapeCoordinates, lineCoordinates)
-    result = 1
-    
+    result = solution(test)
+
     logging.info("My result :{}".format(result))
     return json.dumps(result);
+
+def solution(test):
+    result = {}
+    for key, l in test.items:
+        moves = 0
+        
+
+        result[key] = moves
+
+    return result
