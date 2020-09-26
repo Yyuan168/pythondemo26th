@@ -23,16 +23,18 @@ def saladspree(n, S):
     cost = []
     select = []
     for i in S:
-        for j in i:
-            if len(select) < n:
-                if j != "X":
-                    select.append(int(j))
+        flag = False
+        for j in range(len(i) - n + 1):
+            select = i[j:j+n]
+            if "X" not in select:
+                tmp = [int(i) for i in select]
+                if not flag:
+                   Min = sum(tmp)
                 else:
-                    select = []
-            if len(select) == n:
-                cost.append(sum(select))
-                select = []
-        select = []
+                    Min = min(Min, sum(tmp))
+                flag = True
+        if flag:
+            cost.append(Min)
     
     return min(cost) if len(cost) != 0 else 0
 
