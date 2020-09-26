@@ -14,7 +14,7 @@ def evaluateSaladSpree():
     n = data.get("number_of_salads");
     S = data.get("salad_prices_street_map");
 
-    result = [saladspree(n, S)]
+    result = saladspree(n, S)
 
     logging.info("My result :{}".format(result))
     return jsonify({"result": result});
