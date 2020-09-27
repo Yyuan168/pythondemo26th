@@ -16,7 +16,7 @@ def evaluateSocialDistancing():
     result = solution(test)
 
     logging.info("My result :{}".format(result))
-    return json.dumps(result);
+    return json.loads(result);
 
 def solution(test):
     result = {}

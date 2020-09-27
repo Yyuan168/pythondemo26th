@@ -16,7 +16,7 @@ def evaluateCluster():
     result = solution(data)
 
     logging.info("My result :{}".format(result))
-    return json.dumps(result);
+    return jsonify("result: " + result);
 
 def solution(data):
     zero = []
@@ -25,6 +25,11 @@ def solution(data):
     for row in range(len(data)):
         for col in range(len(data[row])):
             if data[row][col] != "*":
+                if len(cluster) == 0:
+                    cluster.append([(row, col)])
+                # else:
+                #     if abs(cluster[-1][1] - col):
+
                 if data[row][col] == '0':
                     zero.append((row,col))
                 else:
